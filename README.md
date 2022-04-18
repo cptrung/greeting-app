@@ -5,6 +5,10 @@ React Native application that greets you when the app opens.
 - Need to enter your name the first time.
 - Greeting you with time and name.
 
+## Dev flow.
+- In the first time, you need to input the name and the system will create a new record.
+- In other times to open, the app will fetch data and show correctly that you entered
+
 ## Setup and run project
 
 App use Expo to init, See the setup enviroment at https://reactnative.dev/docs/environment-setup
