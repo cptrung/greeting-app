@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   logout: {
     top: 50,
-    right: 20,
+    right: 15,
     position: 'absolute',
   },
 });

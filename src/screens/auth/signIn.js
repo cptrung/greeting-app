@@ -48,7 +48,7 @@ export const SignIn = () => {
         <Text style={styles.textSignIn}>Welcome</Text>
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={schema}>
           {({ handleChange, handleSubmit, values }) => (
-            <View>
+            <View style={{ width: '50%' }}>
               <InputField
                 name="id"
                 style={styles.input}
