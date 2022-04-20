@@ -1,17 +1,10 @@
-// api/userApi.js
 import axiosClient from './axiosClient';
 
-class UserApi {
-  getUser = (params) => {
-    const url = `/user/${params.id}`;
+const userApi = {
+  getUser: (id) => {
+    const url = `/user/${id}`;
     return axiosClient.get(url);
-  };
+  },
+};
 
-  createUser = (params) => {
-    const url = `/user`;
-    return axiosClient.post(url, params);
-  };
-}
-
-const userApi = new UserApi();
 export default userApi;

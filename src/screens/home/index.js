@@ -1,56 +1,48 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
+import { View, ActivityIndicator, Text } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
-import Welcome from './welcome';
-import Input from './input';
 import userApi from '../../api/userApi';
-import { SAVED_KEY } from '../../constants';
-import { showToast } from './../../utils';
+import { AuthContext } from '../../store/context';
+import { getTimeOfDay, showToast } from '../../utils';
 
 const Home = () => {
+  const {
+    authContext: { signOut },
+  } = React.useContext(AuthContext);
+
   const [user, setUser] = React.useState(null);
   const [fetching, setFetching] = React.useState(false);
 
+  const { loggedId } = React.useContext(AuthContext);
   React.useEffect(() => {
     const fetchUser = async () => {
-      // Get key from store to request input name.
-      const savedId = await SecureStore.getItemAsync(SAVED_KEY);
       setFetching(true);
       try {
-        const response = await userApi.getUser({ id: savedId });
+        const response = await userApi.getUser(loggedId);
         setUser(response);
-        setFetching(false);
       } catch (error) {
+        showToast(error || 'The Request has errors.', true);
         setUser(null);
-        setFetching(false);
       }
+      setFetching(false);
     };
     fetchUser();
   }, []);
 
-  const createUser = async (values) => {
-    try {
-      const savedId = await SecureStore.getItemAsync(SAVED_KEY);
-      const response = await userApi.createUser({ id: savedId, ...values });
+  if (fetching) return <ActivityIndicator size="large" color="#000" style={styles.container} />;
 
-      // Save to store
-      await SecureStore.setItemAsync(SAVED_KEY, response.id);
-      setUser(response);
-      showToast('Your name sent successfully.');
-    } catch (error) {
-      setUser(null);
-      showToast('There was an error trying to submit.', true);
-    }
-  };
+  const timeOfDay = getTimeOfDay(new Date());
 
-  if (!user && fetching) return <ActivityIndicator size="large" color="#000" style={styles.container} />;
-
+  const { name } = user || {};
   return (
     <View style={styles.container}>
-      <Welcome {...user} />
-      {!user && <Input createUser={createUser} />}
+      <AntDesign name="logout" size={17} color="#bababa" style={styles.logout} onPress={() => signOut()} />
+      <Text style={styles.text}>Hello</Text>
+      <Text style={styles.textWelcome}>
+        Good {timeOfDay.text}, {name}!
+      </Text>
     </View>
   );
 };

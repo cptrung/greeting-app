@@ -7,13 +7,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontSize: 20,
+    fontSize: 25,
+    marginBottom: 50,
+    fontWeight: 'bold',
   },
-  textWelcome: { fontSize: 20, marginBottom: 20 },
-  icon: {
-    marginBottom: 20,
-    marginTop: 10,
-  },
+  textWelcome: { fontSize: 25, fontWeight: 'bold' },
   parent: {
     marginLeft: 25,
     marginRight: 25,
@@ -36,6 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 5,
+  },
+  logout: {
+    top: 50,
+    right: 20,
+    position: 'absolute',
   },
 });
 
