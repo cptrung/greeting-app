@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   closeButton: {
-    height: 25,
-    width: 25,
+    height: 30,
+    width: 30,
   },
   closeButtonParent: {
     justifyContent: 'center',

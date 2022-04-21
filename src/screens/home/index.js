@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, Text } from 'react-native';
+import { View, ActivityIndicator, Text, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import styles from './styles';
@@ -38,7 +38,9 @@ const Home = () => {
   const { name } = user || {};
   return (
     <View style={styles.container}>
-      <AntDesign name="logout" size={17} color="#bababa" style={styles.logout} onPress={() => signOut()} />
+      <TouchableOpacity onPress={() => signOut()} style={styles.logout}>
+        <AntDesign name="logout" size={17} color="#bababa" />
+      </TouchableOpacity>
       <Text style={styles.text}>Hello</Text>
       <Text style={styles.textWelcome}>
         Good {timeOfDay.text}, {name}!

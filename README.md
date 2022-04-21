@@ -2,12 +2,18 @@
 
 React Native application that greets you when the app opens.
 
-- Need to enter your name the first time.
+- Need to login show welcome.
 - Greeting you with time and name.
 
 ## Dev flow.
-- In the first time, you need to input the name and the system will create a new record.
-- In other times to open, the app will fetch data and show correctly that you entered
+
+## Environment Variables
+
+You can configure some of App's behavior using environment variables.
+
+```
+API_URL='https://625adbffe5365680a1ef0af1.mockapi.io/api/'
+```
 
 ## Setup and run project
 
@@ -18,6 +24,12 @@ App use Expo to init, See the setup enviroment at https://reactnative.dev/docs/e
 - Use Expo app on device or simulator to run app.
 - 😎 **That's it!** You're ready to uses.
 
+## Login user
+
+- id: 1 - Account does not exist
+- id: 2 - Vietnam
+- id: 3 - Trung Cao
+
 ## Other scripts
 
 #### `yarn lint`
@@ -27,14 +39,6 @@ To check code use eslint
 #### `yarn test`
 
 To run unit test
-
-## Environment Variables
-
-You can configure some of App's behavior using environment variables.
-
-```
-API_URL='https://625adbffe5365680a1ef0af1.mockapi.io/api/'
-```
 
 ### Project Structure
 
